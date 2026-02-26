@@ -1,0 +1,125 @@
+body {
+    background-color: #121212; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+/* Lamp Styling */
+.lamp-container {
+    position: relative;
+}
+
+.lamp-top {
+    width: 80px;
+    height: 60px;
+    background: #e67e22;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.lamp-middle {
+    width: 10px;
+    height: 100px;
+    background: #bdc3c7;
+    margin-left: 35px;
+}
+
+.lamp-bottom {
+    width: 60px;
+    height: 10px;
+    background: #7f8c8d;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+/* The Light Glow */
+.light {
+    position: absolute;
+    top: 60px;
+    left: -60px;
+    width: 200px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 235, 59, 0.3) 0%, transparent 70%);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+/* Switch Cord */
+.cord {
+    position: absolute;
+    top: 60px;
+    left: 55px;
+    cursor: pointer;
+}
+
+.string {
+    width: 2px;
+    height: 50px;
+    background: white;
+    margin-left: 4px;
+    transition: 0.2s;
+}
+
+.handle {
+    width: 10px;
+    height: 10px;
+    background: gold;
+    border-radius: 50%;
+}
+
+/* Premium Card */
+.card {
+    width: 300px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: translateX(50px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Active State */
+.active-light .light { opacity: 1; }
+.active-light .card {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: white;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background: #e67e22;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
