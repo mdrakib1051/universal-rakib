@@ -1,98 +1,61 @@
-:root {
-    --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-}
-
 body {
-    background: #050a05;
+    background: #0a1a0a;
     margin: 0;
     overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    justify-content: center;
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
-.field {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at bottom, #1a3c1a 0%, #050a05 80%);
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 1000;
+    display: flex; justify-content: center; align-items: center;
 }
 
-.goal-area {
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    text-align: center;
+.input-box {
+    text-align: center; color: white;
 }
+
+.input-box input {
+    padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; width: 200px;
+}
+
+.field { position: relative; width: 100vw; height: 100vh; background: radial-gradient(circle at bottom, #143314 0%, #050a05 100%); }
 
 .goal-post {
-    width: 220px;
-    height: 130px;
-    border: 6px solid rgba(255, 255, 255, 0.8);
-    border-bottom: none;
-    margin: 0 auto;
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    width: 240px; height: 140px; border: 5px solid white; border-bottom: none;
+    margin: 50px auto; position: relative; transition: 0.3s;
 }
-
-#msg { color: #aaa; font-size: 14px; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px; }
 
 .football {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 60px;
-    cursor: grab;
-    transition: transform 0.1s;
-    z-index: 10;
+    position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+    font-size: 55px; cursor: grab; z-index: 10;
 }
 
-/* Premium Card Design */
+/* Premium Card - Letter Style */
 .premium-card {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%) perspective(1000px) rotateX(20deg) scale(0.8);
-    width: 320px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 25px;
-    padding: 2px; /* For gold border effect */
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 100;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 85%; max-width: 350px;
+    background: #fffdf5; /* Old paper color */
+    border-radius: 15px; padding: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 100px rgba(212, 175, 55, 0.1);
+    opacity: 0; visibility: hidden; transition: all 0.8s ease;
+    z-index: 500; border: 1px solid #d4af37;
 }
 
-.gold-border {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 25px;
-    padding: 2px;
-    background: var(--gold);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
+.premium-card.active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+
+.close-btn {
+    position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: #888;
 }
 
-.card-content {
-    background: rgba(10, 10, 10, 0.9);
-    border-radius: 23px;
-    padding: 40px 20px;
-    text-align: center;
-    color: white;
+.title { color: #1b4d2e; text-align: center; font-size: 28px; margin-bottom: 5px; }
+
+.letter-body {
+    line-height: 1.8; color: #444; font-size: 16px; text-align: justify;
+    border-top: 1px solid #eee; padding-top: 15px;
 }
 
-.premium-card.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg) scale(1);
-}
+.signature { margin-top: 25px; text-align: right; color: #222; font-style: italic; }
 
-.claim-btn {
-    background: var(--gold);
-    border: none; padding: 12px 30px;
-    border-radius: 50px; font-weight: bold;
-    cursor: pointer; margin-top: 20px;
-}
+.name-bold { font-weight: bold; font-size: 20px; color: #1b4d2e; }
