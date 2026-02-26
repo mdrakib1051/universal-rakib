@@ -1,43 +1,50 @@
-body {
-    background: radial-gradient(circle, #1b3322 0%, #0a0a0a 100%); /* Dark green turf feel */
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
+:root {
+    --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
 }
 
-.game-container {
+body {
+    background: #050a05;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.field {
     position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at bottom, #1a3c1a 0%, #050a05 80%);
+}
+
+.goal-area {
+    position: absolute;
+    top: 50px;
     width: 100%;
-    max-width: 400px;
-    height: 600px;
     text-align: center;
 }
 
-/* Goal Post Styling */
 .goal-post {
-    width: 200px;
-    height: 120px;
-    border: 5px solid white;
+    width: 220px;
+    height: 130px;
+    border: 6px solid rgba(255, 255, 255, 0.8);
     border-bottom: none;
     margin: 0 auto;
-    position: relative;
-    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
-/* Football Styling */
+#msg { color: #aaa; font-size: 14px; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px; }
+
 .football {
-    font-size: 50px;
-    cursor: pointer;
     position: absolute;
-    bottom: 50px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    user-select: none;
+    font-size: 60px;
+    cursor: grab;
+    transition: transform 0.1s;
+    z-index: 10;
 }
 
 /* Premium Card Design */
@@ -45,51 +52,47 @@ body {
     position: absolute;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
-    width: 300px;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    border: 2px solid gold;
-    color: white;
+    transform: translate(-50%, -50%) perspective(1000px) rotateX(20deg) scale(0.8);
+    width: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 2px; /* For gold border effect */
     opacity: 0;
-    pointer-events: none;
-    transition: all 0.6s ease;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    visibility: hidden;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
 }
 
-.premium-card.show {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: all;
-    top: 50%;
-}
-
-.card-glow {
+.gold-border {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    box-shadow: inset 0 0 50px gold;
-    opacity: 0.2;
-    border-radius: 20px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 25px;
+    padding: 2px;
+    background: var(--gold);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
 }
 
-.join-btn {
-    background: linear-gradient(45deg, #d4af37, #f9f295);
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 15px;
+.card-content {
+    background: rgba(10, 10, 10, 0.9);
+    border-radius: 23px;
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
 }
 
-/* Animation Classes */
-.kicked {
-    bottom: 450px !important; /* Move to Goal */
-    transform: translateX(-50%) rotate(360deg) scale(0.7);
+.premium-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg) scale(1);
 }
 
-.ball-exit {
-    bottom: -100px !important; /* Move down off-screen */
-    opacity: 0;
+.claim-btn {
+    background: var(--gold);
+    border: none; padding: 12px 30px;
+    border-radius: 50px; font-weight: bold;
+    cursor: pointer; margin-top: 20px;
 }
