@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Pro Football Premium Unlock</title>
+    <title>Ramadan Wishes - Rakib</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;600&family=Anek+Bangla:wght@200;500&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div id="name-screen" class="overlay">
+        <div class="input-box">
+            <h2>তোমার নাম লিখো</h2>
+            <input type="text" id="userName" placeholder="এখানে নাম লিখুন...">
+            <button onclick="startGame()">Enter</button>
+        </div>
+    </div>
 
     <div class="field">
         <div class="goal-area">
             <div class="goal-post" id="goalPost">
                 <div class="net"></div>
             </div>
-            <p id="msg">Swipe the ball to score!</p>
+            <p id="msg">বক্সটি খুলতে গোল করো!</p>
         </div>
 
         <div class="football" id="ball">⚽</div>
 
         <div class="premium-card" id="premiumCard">
-            <div class="gold-border"></div>
+            <div class="close-btn" onclick="closeCard()">×</div>
             <div class="card-content">
-                <span class="crown-icon">👑</span>
-                <h2>Premium Access</h2>
-                <div class="divider"></div>
-                <p>Welcome to the Elite Club. Your goal-scoring skills have unlocked our premium features.</p>
-                <button class="claim-btn">Claim Now</button>
+                <h1 class="title">রমজান মোবারক</h1>
+                <h3 id="display-name">প্রিয়, </h3>
+                <div class="letter-body">
+                    <p>প্রিয় রমজানের শুভেচ্ছা। আশা করি খুব ভালোভাবে রমজান এনজয় করছো। অনেকদিন ধরেই তোমার সাথে কথা হচ্ছে, যদি কখনো মনে কষ্ট দিয়ে থাকি তাহলে সরি। ভালোভাবে বাকি রমজানগুলো এনজয় করো। এই রাকিব তোমার পাশে অলওয়েজ ছিল, আছে এবং থাকবে।</p>
+                </div>
+                <div class="signature">
+                    <p>ইতি তোমারই,</p>
+                    <p class="name-bold">রাকিব</p>
+                </div>
             </div>
         </div>
     </div>
