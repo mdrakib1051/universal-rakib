@@ -2,26 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Goal Interaction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pro Football Premium Unlock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="game-container">
-        <div class="goal-post">
-            <div class="net"></div>
+    <div class="field">
+        <div class="goal-area">
+            <div class="goal-post" id="goalPost">
+                <div class="net"></div>
+            </div>
+            <p id="msg">Swipe the ball to score!</p>
         </div>
 
-        <div class="football" id="ball" onclick="kickBall()">⚽</div>
+        <div class="football" id="ball">⚽</div>
 
-        <div class="confetti" id="confetti"></div>
-
-        <div class="premium-card" id="card">
-            <div class="card-glow"></div>
-            <h2>Premium Member</h2>
-            <p>Congratulations! You scored and unlocked exclusive access.</p>
-            <button class="join-btn">Get Started</button>
+        <div class="premium-card" id="premiumCard">
+            <div class="gold-border"></div>
+            <div class="card-content">
+                <span class="crown-icon">👑</span>
+                <h2>Premium Access</h2>
+                <div class="divider"></div>
+                <p>Welcome to the Elite Club. Your goal-scoring skills have unlocked our premium features.</p>
+                <button class="claim-btn">Claim Now</button>
+            </div>
         </div>
     </div>
 
