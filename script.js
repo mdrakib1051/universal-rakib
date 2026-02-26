@@ -1,50 +1,66 @@
-let startY, startX;
+let startX, startY, userName = "";
 let attempts = 0;
 const ball = document.getElementById('ball');
 const card = document.getElementById('premiumCard');
-const msg = document.getElementById('msg');
+
+function startGame() {
+    userName = document.getElementById('userName').value;
+    if (userName.trim() !== "") {
+        document.getElementById('display-name').innerText = "প্রিয় " + userName + ",";
+        document.getElementById('name-screen').style.display = "none";
+    } else {
+        alert("দয়া করে নাম লিখুন!");
+    }
+}
 
 ball.addEventListener('touchstart', (e) => {
-    startY = e.touches[0].clientY;
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
 });
 
 ball.addEventListener('touchend', (e) => {
-    let endY = e.changedTouches[0].clientY;
     let endX = e.changedTouches[0].clientX;
+    let endY = e.changedTouches[0].clientY;
     
-    if (startY > endY) { // Upward swipe
-        handleShoot(startX - endX);
+    let diffX = endX - startX;
+    let diffY = startY - endY;
+
+    if (diffY > 50) { // Valid upward swipe
+        shootBall(diffX);
     }
 });
 
-function handleShoot(deviation) {
+function shootBall(xMove) {
     attempts++;
-    ball.style.transition = "all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)";
+    // Physics: Ball follows swipe direction
+    ball.style.transition = "all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1)";
     
-    if (attempts < 4) { 
-        // MISS: Ball hits the bar or goes wide
-        ball.style.transform = `translate(calc(-50% - ${deviation}px), -400px) scale(0.6)`;
-        msg.innerText = "So Close! Try Harder (" + attempts + "/4)";
-        
+    if (attempts < 4) {
+        // MISS logic: Move slightly away from center
+        ball.style.transform = `translate(calc(-50% + ${xMove}px), -350px) scale(0.6)`;
         setTimeout(() => {
-            ball.style.transform = "translateX(-50%) scale(1)"; // Reset ball
+            ball.style.transform = "translateX(-50%) scale(1)";
         }, 1000);
     } else {
-        // GOAL: Success on 4th or 5th attempt
-        ball.style.transform = `translate(-50%, -480px) scale(0.4)`;
-        msg.innerText = "GOAL!!!";
+        // GOAL: Straight into the net
+        ball.style.transform = `translate(calc(-50% + ${xMove/4}px), -450px) scale(0.4)`;
         document.getElementById('goalPost').style.borderColor = "gold";
-
+        
         setTimeout(() => {
-            // Ball animation to bottom
-            ball.style.transition = "all 0.8s ease-in";
-            ball.style.transform = "translate(-50%, 500px) scale(0)";
+            // Ball falls down and vanishes
+            ball.style.transition = "all 1s ease-in";
+            ball.style.transform = `translate(-50%, 600px) scale(0)`;
             
-            // Show Premium Card
+            // Show Letter with Delay
             setTimeout(() => {
                 card.classList.add('active');
-            }, 500);
-        }, 800);
+            }, 600);
+        }, 700);
     }
+}
+
+function closeCard() {
+    card.classList.remove('active');
+    attempts = 0; // Reset for another try
+    ball.style.transform = "translateX(-50%) scale(1)";
 }
