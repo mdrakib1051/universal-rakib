@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Lamp Card</title>
+    <title>Football Goal Interaction</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <div class="lamp-container">
-            <div class="lamp">
-                <div class="lamp-top"></div>
-                <div class="lamp-middle"></div>
-                <div class="lamp-bottom"></div>
-                <div class="light" id="light"></div>
-            </div>
-            <div class="cord" id="cord" onclick="toggleLight()">
-                <div class="string"></div>
-                <div class="handle"></div>
-            </div>
+    <div class="game-container">
+        <div class="goal-post">
+            <div class="net"></div>
         </div>
 
-        <div class="card" id="premiumCard">
-            <h2>Welcome Back</h2>
-            <p>Premium Access Granted!</p>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button class="login-btn">Login</button>
+        <div class="football" id="ball" onclick="kickBall()">⚽</div>
+
+        <div class="confetti" id="confetti"></div>
+
+        <div class="premium-card" id="card">
+            <div class="card-glow"></div>
+            <h2>Premium Member</h2>
+            <p>Congratulations! You scored and unlocked exclusive access.</p>
+            <button class="join-btn">Get Started</button>
         </div>
     </div>
 
